@@ -1,7 +1,15 @@
-// find maximum between 3 numbers
+// find maximum between 3 numbers using if statements
 
 #include <stdio.h>
 #include <stdlib.h>
+
+int max(int num1, int num2, int num3);
+
+int main()
+{
+    printf("The largest number is %d", max(4, 1000, 20));
+    return 0;
+}
 
 int max(int num1, int num2, int num3)
 {
@@ -12,9 +20,4 @@ int max(int num1, int num2, int num3)
         result = num2;
     else
         result = num3;
-}
-
-int main()
-{
-    printf("The largest number is %d", max(4, 1000, 20));
 }
