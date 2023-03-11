@@ -1,7 +1,8 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int main(){
+int main()
+{
     double num1, num2;
     char op;
 
@@ -20,7 +21,7 @@ int main(){
         printf("%f", num1 * num2);
     else if (op == '/')
         printf("%f", (float)num1 / num2);
-    else 
+    else
         printf("Invalid Operator");
 
     return 0;
