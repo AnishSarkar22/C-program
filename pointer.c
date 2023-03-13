@@ -24,4 +24,4 @@ int main()
 
 
 /* Deferencing a pointer means to grab the actual value stored at the memory address of that pointer.
-    We use "*" to dereference a pointer.   */
+    We use "*" to dereference a pointer.  */
