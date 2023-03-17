@@ -1,80 +1,98 @@
-// Quick sort in C
-
 #include <stdio.h>
+#include <stdlib.h>
 
-// function to swap elements
-void swap(int *a, int *b) {
-  int t = *a;
-  *a = *b;
-  *b = t;
-}
-
-// function to find the partition position
-int partition(int array[], int low, int high) {
-  
-  // select the rightmost element as pivot
-  int pivot = array[high];
-  
-  // pointer for greater element
-  int i = (low - 1);
-
-  // traverse each element of the array
-  // compare them with the pivot
-  for (int j = low; j < high; j++) {
-    if (array[j] <= pivot) {
-        
-      // if element smaller than pivot is found
-      // swap it with the greater element pointed by i
-      i++;
-      
-      // swap element at i with element at j
-      swap(&array[i], &array[j]);
+/*Displays the array, passed to this method*/
+void display(int arr[], int n)
+{
+    int i;
+    for (i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
     }
-  }
 
-  // swap the pivot element with the greater element at i
-  swap(&array[i + 1], &array[high]);
-  
-  // return the partition point
-  return (i + 1);
+    printf("\n");
 }
 
-void quickSort(int array[], int low, int high) {
-  if (low < high) {
-    
-    // find the pivot element such that
-    // elements smaller than pivot are on left of pivot
-    // elements greater than pivot are on right of pivot
-    int pi = partition(array, low, high);
-    
-    // recursive call on the left of pivot
-    quickSort(array, low, pi - 1);
-    
-    // recursive call on the right of pivot
-    quickSort(array, pi + 1, high);
-  }
+/*Swap function to swap two values*/
+void swap(int *first, int *second)
+{
+    int temp = *first;
+    *first = *second;
+    *second = temp;
 }
 
-// function to print array elements
-void printArray(int array[], int size) {
-  for (int i = 0; i < size; ++i) {
-    printf("%d  ", array[i]);
-  }
-  printf("\n");
+/*Partition method which selects a pivot
+  and places each element which is less than the pivot value to its left
+  and the elements greater than the pivot value to its right
+  arr[] --- array to be partitioned
+  lower --- lower index
+  upper --- upper index
+*/
+int partition(int arr[], int lower, int upper)
+{
+    int i = (lower - 1);
+
+    int pivot = arr[upper];  // Selects last element as the pivot value
+
+    int j;
+    for (j = lower; j < upper; j++)
+    {
+        if (arr[j] <= pivot)
+        {  // if current element is smaller than the pivot
+
+            i++;  // increment the index of smaller element
+            swap(&arr[i], &arr[j]);
+        }
+    }
+
+    swap(&arr[i + 1], &arr[upper]);  // places the last element i.e, the pivot
+                                     // to its correct position
+
+    return (i + 1);
 }
 
-// main function
-int main() {
-  int data[] = {8, 7, 2, 1, 0, 9, 6};
-  
-  int n = sizeof(data) / sizeof(data[0]);
-  
-  printf("Unsorted Array\n");
-  printArray(data, n);
-  
-  // perform quicksort on data
-  quickSort(data, 0, n - 1);
-  
-  printf("Sorted array in ascending order: \n");
-  printArray(data, n);
+/*This is where the sorting of the array takes place
+    arr[] --- Array to be sorted
+    lower --- Starting index
+    upper --- Ending index
+*/
+void quickSort(int arr[], int lower, int upper)
+{
+    if (upper > lower)
+    {
+        // partitioning index is returned by the partition method , partition
+        // element is at its correct poition
+
+        int partitionIndex = partition(arr, lower, upper);
+
+        // Sorting elements before and after the partition index
+        quickSort(arr, lower, partitionIndex - 1);
+        quickSort(arr, partitionIndex + 1, upper);
+    }
+}
+
+int main()
+{
+    int n;
+    printf("Enter size of array:\n");
+    scanf("%d", &n);  // E.g. 8
+
+    printf("Enter the elements of the array\n");
+    int i;
+    int *arr = (int *)malloc(sizeof(int) * n);
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Original array: ");
+    display(arr, n);  // Original array : 10 11 9 8 4 7 3 8
+
+    quickSort(arr, 0, n - 1);
+
+    printf("Sorted array: ");
+    display(arr, n);  // Sorted array : 3 4 7 8 8 9 10 11
+    getchar();
+    free(arr);
+    return 0;
 }
