@@ -1,4 +1,5 @@
 //Pointer is a type of data that is a memory address
+// "&n" can be literally translated as the address of n
 
 #include<stdio.h>
 #include<stdlib.h>
