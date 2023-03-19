@@ -1,3 +1,5 @@
+//uppercases a string with using ctype function 
+
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
