@@ -43,6 +43,15 @@ int main()
     printf("Enter the substring: ");
     gets(substr);
     int pos = kmp(str, substr);
-    (pos == -1) ? printf("Match not found.") : printf("Pattern starts from %d", pos + 1);
+    if(pos==-1)
+    {
+        printf("Match not found");
+    }
+    else
+    {
+        printf("Pattern starts from %d",pos+1);
+    }
+
+
     return 0;
 }
