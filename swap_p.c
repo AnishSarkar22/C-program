@@ -1,7 +1,7 @@
 //swap using pointers and functions
 
 #include <stdio.h>
-
+    
 void swap(int *a, int *b);
 
 int main(void)
