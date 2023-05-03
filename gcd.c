@@ -1,4 +1,4 @@
-//find G.C.D using recursion
+// find G.C.D using recursion
 #include <stdio.h>
 
 int hcf(int a, int b);
@@ -8,11 +8,11 @@ int main()
     int a, b;
     printf("Enter two positive integers: ");
     scanf("%d %d", &a, &b);
-    printf("G.C.D of %d and %d is %d.", a, b, hcf(a, b));
+    printf("G.C.D of %d and %d is %d", a, b, hcf(a, b));
     return 0;
 }
 
-//using Euclidean algorithm
+// using Euclidean algorithm
 int hcf(int a, int b)
 {
     if (b != 0)
