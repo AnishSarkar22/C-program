@@ -37,7 +37,7 @@ int main()
 {
 	int arr[] = {12, 11, 13, 5, 6};
 	// int n = sizeof(arr) / sizeof(arr[0]);
-	int n=5;
+	int n = 5;
 	insertionSort(arr, n);
 	printArray(arr, n);
 
