@@ -17,7 +17,7 @@ void printpattern(int n){
 }
 
 int main(){
-    int n =8;
+    int n =4;
     printpattern(n);
 
     return 0;

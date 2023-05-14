@@ -13,27 +13,25 @@ struct Student
 
 int main ()
 {
-    struct Student student1;
-    student1.age=22;
-    student1.gpa=3.2;
-    strcpy(student1.name, "Anuj");
-    strcpy(student1.major, "IT");
+    struct Student s1, s2;
+    s1.age=22;
+    s1.gpa=3.2;
+    strcpy(s1.name, "Anuj");
+    strcpy(s1.major, "IT");
 
-    struct Student student2;
-    student2.age=21;
-    student2.gpa=3.4;
-    strcpy(student2.name, "Akash");
-    strcpy(student2.major, "Business");    
+    s2.age=21;
+    s2.gpa=3.4;
+    strcpy(s2.name, "Akash");
+    strcpy(s2.major, "Business");    
     
     
-    printf("%f\n", student1.gpa);
-    printf("%s\n", student1.major);
-    printf("%s\n\n", student1.name);
+    printf("%f\n", s1.gpa);
+    printf("%s\n", s1.major);
+    printf("%s\n\n", s1.name);
 
-    printf("%f\n", student2.gpa);
-    printf("%s\n", student2.major);
-    printf("%s\n", student2.name);
-
+    printf("%f\n", s2.gpa);
+    printf("%s\n", s2.major);
+    printf("%s\n", s2.name);
 
     return 0;
 }
