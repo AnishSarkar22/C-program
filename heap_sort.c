@@ -1,8 +1,8 @@
-//
 #include <stdio.h>
+#include <stdlib.h>
 
 void max_heapify(int *a, int i, int n);
-void heapsort(int *a, int n);
+void heapSort(int *a, int n);
 void build_maxheap(int *a, int n);
 
 void max_heapify(int *a, int i, int n)
@@ -28,7 +28,7 @@ void max_heapify(int *a, int i, int n)
     return;
 }
 
-void heapsort(int *a, int n)
+void heapSort(int *a, int n)
 {
     int i, temp;
     for (i = n; i >= 2; i--)
@@ -62,7 +62,7 @@ int main()
     }
 
     build_maxheap(a, n);
-    heapsort(a, n);
+    heapSort(a, n);
     printf("Sorted Output\n");
     for (i = 1; i <= n; i++)
     {
