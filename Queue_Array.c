@@ -17,7 +17,7 @@ void display(int *);
 int main() {
     int data;
     int choice;
-    char ch;
+    char ch = 'y';
 
     while (ch == 'y' || ch == 'Y') {
         system("cls");
