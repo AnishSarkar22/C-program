@@ -31,7 +31,7 @@ int main()
     {
         system("cls");
         printf("-----------MAIN MENU-----------");
-        printf("\n 1) Create a List");
+        printf("\n 1) Create a List\n");
         printf("\n 2) To insert a new number at the beginning\n");
         printf("\n 3) To insert a new number after the number\n");
         printf("\n 4) To insert a new number before the number\n");
@@ -42,7 +42,7 @@ int main()
         printf("\n 9) To reverse the list\n");
         printf("\n 10) To display the list\n");
         printf("\n 11) For EXIT\n");
-        printf("\nEnter your Choice:");
+        printf("\nEnter your Choice:  ");
         scanf("%d", &no);
         switch (no)
         {

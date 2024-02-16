@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define N 100
 
-int stack[100], i, j, choice = 0, n, top = -1;
+int stack[N], i, j, choice = 0, n, top = -1;
 void push();
 void pop();
 void show();
@@ -51,15 +52,15 @@ int main()
 
 void push()
 {
-    int val;
+    int data;
     if (top == n)
         printf("\n Overflow");
     else
     {
         printf("Enter the value?");
-        scanf("%d", &val);
+        scanf("%d", &data);
         top = top + 1;
-        stack[top] = val;
+        stack[top] = data;
     }
 }
 

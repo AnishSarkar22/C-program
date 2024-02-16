@@ -60,7 +60,7 @@ void push()
     }
     else
     {
-        printf("Enter the data");
+        printf("Enter the data:   ");
         scanf("%d", &data);
         if (head == NULL)
         {
@@ -80,7 +80,7 @@ void push()
 
 void pop()
 {
-    int item;
+    // int item;
     struct node *ptr;   
     if (head == NULL)
     {
@@ -88,11 +88,11 @@ void pop()
     }
     else
     {
-        item = head->data;
+        // item = head->data;
         ptr = head;
         head = head->next;
         free(ptr);
-        printf("Item popped from stack ");
+        printf("Item popped from stack!! ");
     }
 }
 
@@ -107,7 +107,7 @@ void display()
     }
     else
     {
-        printf("Printing Stack elements... \n");
+        printf("Printing Stack elements...  \n");
         while (ptr != NULL)
         {
             printf("%d\n", ptr->data);

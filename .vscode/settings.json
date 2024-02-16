@@ -42,6 +42,10 @@
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "__hash_table": "c",
+        "__split_buffer": "c",
+        "bitset": "c",
+        "string_view": "c"
     }
 }

@@ -10,16 +10,16 @@ static int rear = -1;
 int a[size];
 
 void create(int *);
-void insert(int *, int);
-void delete_q(int *);
+void enqueue(int *, int);
+void dequeue(int *);
 void display(int *);
 
 int main() {
     int data;
     int choice;
-    char ch = 'y';
+    char ch;
 
-    while (ch == 'y') {
+    while (ch == 'y' || ch == 'Y') {
         system("cls");
         printf("\n Main Menu\n");
         printf("\n1. Create Queue using array");
@@ -43,21 +43,21 @@ int main() {
                 printf("\n Push into the Queue\n");
                 printf("Enter the element to push: ");
                 scanf("%d", &data);
-                insert(a, data);
+                enqueue(a, data);
                 break;
             case 4:
                 printf("\n Pop from the Queue\n");
-                delete_q(a);
+                dequeue(a);
                 break;
             case 5:
                 exit(0);
             default:
                 printf("\n\t Please Enter a Valid Choice (1/2/3/4/5)\n");
         }
-
+ 
         printf("Do you want to continue? (y/n): ");
         fflush(stdin);
-        scanf(" %c", &ch); // Added a space before %c to consume the newline character
+        scanf(" %c", &ch); // a space before %c is required to consume the newline character
     }
 
     return 0;
@@ -69,13 +69,13 @@ void create(int *t) {
     printf("\n Enter the no. of elements to be inserted: ");
     scanf("%d", &rear);
     for (i = 0; i < rear; i++) {
-        printf("\n Enter the %dth element: ", i + 1); // Fixed the prompt
-        scanf("%d", t + i); // Changed scan to scanf and fixed t indexing
+        printf("\n Enter the %dth element: ", i + 1); 
+        scanf("%d", t + i); 
     }
-    front = 0; // Fixed initialization of front
+    front = 0; 
 }
 
-void insert(int *t, int d) {
+void enqueue(int *t, int d) {
     if (rear == (size - 1)) {
         printf("\n\tQueue overflow\n");
         return;
@@ -85,7 +85,7 @@ void insert(int *t, int d) {
     }
 }
 
-void delete_q(int *t) {
+void dequeue(int *t) {
     if (front == -1 || front > rear) {
         printf("\n\tQueue underflow\n");
         return;
