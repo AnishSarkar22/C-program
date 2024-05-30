@@ -86,7 +86,7 @@ int main()
     }
 
     printf("Original array: ");
-    display(arr, n);  // Original array : 10 11 9 8 4 7 3 8
+    display(arr, n);  //  Original array : 10 11 9 8 4 7 3 8
 
     quickSort(arr, 0, n - 1);
 
