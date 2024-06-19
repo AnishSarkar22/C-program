@@ -1,6 +1,4 @@
-// C code to implement the 
-// matrix chain multiplication using recursion
-
+// using recursion
 #include <limits.h>
 #include <stdio.h>
 

@@ -2,8 +2,7 @@
 #define INF 2147483647  
 #include <stdio.h>
 #define INF 2147483647
-   
-int n = 4; // size of the adjaceny matrix  
+
 int n = 4; // size of the adjacency matrix
    
 // O(n^2)
@@ -19,7 +18,7 @@ void fillDistanceMatrix(int A[n][n], int D[n][n]) {
        }  
    }  
 }  
-   
+
 // O(n^3)  
 void floydWarshall(int A[n][n], int D[n][n]) {  
    fillDistanceMatrix(A, D);  
