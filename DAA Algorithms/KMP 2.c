@@ -1,3 +1,5 @@
+// KMP string matching
+
 #include <stdio.h>
 #include <string.h>
 char txt[100], pat[100];
