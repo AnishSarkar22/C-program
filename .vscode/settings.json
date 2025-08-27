@@ -46,6 +46,7 @@
         "__hash_table": "c",
         "__split_buffer": "c",
         "bitset": "c",
-        "string_view": "c"
+        "string_view": "c",
+        "math.h": "c"
     }
 }
