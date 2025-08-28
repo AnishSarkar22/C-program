@@ -159,6 +159,23 @@ In C, a string is a **one-dimensional array of characters** that is terminated b
 
 C doesn't store array length information. For static arrays declared in the same scope, you can use: `int length = sizeof(array) / sizeof(array[0]);`. However, this doesn't work for arrays passed to functions (they decay to pointers). The common practice is to pass the array size as a separate parameter to functions.
 
+- `sizeof(array)` → total bytes used by the array.
+- `sizeof(array)/sizeof(array[0])` → number of elements in the array.
+- Examples:
+
+```c
+char c[20];
+double d[20];
+
+printf("%zu\n", sizeof(c));  // 20  (1 byte each)
+printf("%zu\n", sizeof(d));  // 160 (8 bytes each)
+
+// But number of elements:
+printf("%zu\n", sizeof(c) / sizeof(c[0])); // 20
+printf("%zu\n", sizeof(d) / sizeof(d[0])); // 20
+
+```
+
 ### **25. What are multidimensional arrays? How are they stored in memory?**
 
 Multidimensional arrays are arrays of arrays. A 2D array like `int arr[3][4]` can be visualized as a table with 3 rows and 4 columns. In memory, multidimensional arrays are stored in **row-major order** - all elements of the first row, then all elements of the second row, and so on.
