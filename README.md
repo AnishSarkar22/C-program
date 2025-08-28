@@ -214,6 +214,31 @@ A dangling pointer is a pointer that points to a memory location that has alread
 
 Pointer arithmetic involves performing arithmetic operations (addition, subtraction, increment, decrement) on pointers. When you add 1 to a pointer, it doesn't add 1 byte - it adds the size of the data type it points to. For example, if `int *p` points to an integer, `p + 1` points to the next integer (4 bytes ahead on most systems).
 
+- For example:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[3] = {10, 20, 30};
+    int *p = arr; // p points to arr[0]
+
+    printf("p points to value: %d at address %p\n", *p, (void*)p);
+
+    p = p + 1; // move pointer by 1 (but jumps 4 bytes, since int = 4 bytes)
+    printf("After p+1, p points to value: %d at address %p\n", *p, (void*)p);
+
+    p = p + 1; // move pointer again
+    printf("After another p+1, p points to value: %d at address %p\n", *p, (void*)p);
+
+    return 0;
+}
+// OUTPUT:
+// p points to value: 10 at address 0x7ffee8d630
+// After p+1, p points to value: 20 at address 0x7ffee8d634
+// After another p+1, p points to value: 30 at address 0x7ffee8d638
+```
+
 | **Data Type** | **Typical Size (bytes)**             | **Pointer Arithmetic Jump (when you do `p+1`)**                 |
 | ------------- | ------------------------------------ | --------------------------------------------------------------- |
 | `char`        | 1 byte                               | Moves **1 byte** forward                                        |
