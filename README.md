@@ -22,10 +22,13 @@ A **compiler** (which C uses) translates the entire source code into machine cod
 
 The primary data types are:
 
-- `int`: For integer values (e.g., 10, -50).
-- `char`: For single characters (e.g., 'a', 'Z').
-- `float`: For single-precision floating-point numbers (e.g., 3.14).
-- `double`: For double-precision floating-point numbers (more precise than `float`).
+- `int`: For integer values (4 bytes).
+  - `short int` (2 bytes, smaller range)
+  - `long int` (4 or 8 bytes, larger range)
+  - `unsigned int` (only positive values, doubles the upper limit)
+- `char`: For single characters (1 byte).
+- `float`: For single-precision floating-point numbers (4 bytes).
+- `double`: For double-precision floating-point numbers (more precise than `float`) (8 bytes).
 - `void`: Represents the absence of a type, primarily used for functions that don't return a value or for generic pointers.
 
 These can be modified with qualifiers like `short`, `long`, `signed`, and `unsigned`.
@@ -134,6 +137,10 @@ Recursion is a programming technique where a function calls itself to solve a pr
 Example: In `int add(int a, int b)` - `a` and `b` are formal parameters. In `result = add(5, 10);` - `5` and `10` are actual parameters.
 
 ---
+
+## Time Complexity of Algorithms
+
+![Time Complexity Table](/images/Time%20Complexity%20of%20Algorithms.png)
 
 ## Arrays & Strings
 
@@ -316,13 +323,72 @@ This results in the operating system terminating the program.
 
 ### **40. What is the difference between a `struct` and a `union`?**
 
-This is a classic C question. 💡
+- **`struct` (Structure)**: It is a user defined data type that can be used to group elements of different types into a single type. Memory is allocated for **all** its members, and the size of the struct is the sum (or more, due to padding) of the sizes of its members. For example:
 
-- **`struct` (Structure)**: A user-defined data type that groups related variables of different data types. Memory is allocated for **all** its members, and the size of the struct is the sum (or more, due to padding) of the sizes of its members.
+```c
+struct {
+    char *engine;
+} car1, car2;
+
+int main() {
+    car1.engine = "DDis 190 Engine";
+    car2.engine = "1.2 L Kappa Dual VTVT";
+    printf("%s\n", car1.engine);
+    printf("%s", car2.engine);
+    return 0;
+```
 
 - **`union` (Union)**: A user-defined data type where all members share the **same memory location**. Memory is allocated for the **largest member** only. You can only use one member of the union at a time.
 
 Analogy: A `struct` is a toolbox with different compartments for each tool. A `union` is a single compartment where you can only place one tool at a time.
+
+### **40a. What is a structure tag in C?**
+
+A **structure tag** is the name given to a structure type definition. It allows you to declare variables of that structure type later in your code without redefining the structure. The tag follows the `struct` keyword in the structure definition.
+
+**Example:**
+
+```c
+struct Point {   // "Point" is the structure tag
+    int x;
+    int y;
+};
+```
+
+You can now declare variables of type `struct Point`:
+
+```c
+struct Point p1, p2;
+```
+
+**Notes:**
+
+- The structure tag is optional, but without it, you cannot declare variables of that type elsewhere unless you use a typedef.
+- The tag only defines the type, not a variable itself.
+
+**Anonymous struct (no tag):**
+
+```c
+struct {
+    int x;
+    int y;
+} p1;  // Only p1 can be declared this way
+```
+
+**With typedef:**
+
+```c
+typedef struct Point {
+    int x;
+    int y;
+} Point;
+
+Point p1; // Now you can use "Point" directly
+```
+
+**With type:**
+
+![Structure Tag with Type](/images/Structure%20Tag.png)
 
 ### **41. What is `typedef` and why is it used?**
 
@@ -351,6 +417,20 @@ struct Person {
     struct Address addr;  // Nested structure
     int age;
 };
+
+// driver code
+int main() {
+    struct Person p1; // instantiation of struct Person
+
+    // Accessing nested fields
+    strcpy(p1.addr.street, "123 Main St");
+    strcpy(p1.addr.city, "New York");
+    
+    printf("Street: %s\n", p1.addr.street);
+    printf("City: %s\n", p1.addr.city);
+
+    return 0;
+}
 ```
 
 ### **44. What is a bit field in C?**
@@ -482,7 +562,7 @@ A pointer to a pointer is a variable that stores the memory address of another p
 
 ### **58. What is a function pointer?**
 
-A function pointer is a pointer that stores the memory address of a function. This allows you to treat functions like variables—you can pass them to other functions, store them in arrays, and call them indirectly through the pointer. They are essential for implementing callback mechanisms and plugins.
+A function pointer is a pointer that stores the memory address of a function. This allows you to treat functions like variables, you can pass them to other functions, store them in arrays, and call them indirectly through the pointer. They are essential for implementing callback mechanisms and plugins.
 
 Declaration: `return_type (*pointer_name)(parameter_types);`
 
@@ -570,7 +650,7 @@ Bitwise operators perform operations on the individual bits of integer-type oper
 - `<<` (Left Shift): Shifts bits to the left, filling with zeros (equivalent to multiplication by 2).
 - `>>` (Right Shift): Shifts bits to the right (equivalent to division by 2).
 
-### **68. What are the stages of the C compilation process? ⚙️**
+### **68. What are the stages of the C compilation process?**
 
 A C program goes through four main stages to become an executable:
 
