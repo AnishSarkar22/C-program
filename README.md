@@ -214,6 +214,17 @@ A dangling pointer is a pointer that points to a memory location that has alread
 
 Pointer arithmetic involves performing arithmetic operations (addition, subtraction, increment, decrement) on pointers. When you add 1 to a pointer, it doesn't add 1 byte - it adds the size of the data type it points to. For example, if `int *p` points to an integer, `p + 1` points to the next integer (4 bytes ahead on most systems).
 
+| **Data Type** | **Typical Size (bytes)**             | **Pointer Arithmetic Jump (when you do `p+1`)**                 |
+| ------------- | ------------------------------------ | --------------------------------------------------------------- |
+| `char`        | 1 byte                               | Moves **1 byte** forward                                        |
+| `short`       | 2 bytes                              | Moves **2 bytes** forward                                       |
+| `int`         | 4 bytes                              | Moves **4 bytes** forward                                       |
+| `float`       | 4 bytes                              | Moves **4 bytes** forward                                       |
+| `double`      | 8 bytes                              | Moves **8 bytes** forward                                       |
+| `long`        | 4 or 8 bytes (depends on system)     | Moves that many bytes forward                                   |
+| `long long`   | 8 bytes                              | Moves **8 bytes** forward                                       |
+| `void*`       | 8 bytes on 64-bit, 4 bytes on 32-bit | Just holds an address (not used for arithmetic without casting) |
+
 ### **32. What is the difference between `*p++`, `(*p)++`, and `++*p`?**
 
 - `*p++`: Due to operator precedence, this is equivalent to `*(p++)`. It dereferences the current pointer value, then increments the pointer (not the value).
